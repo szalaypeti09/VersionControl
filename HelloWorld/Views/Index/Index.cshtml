@@ -1,0 +1,24 @@
+﻿﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage
+
+@using DotNetNuke.Web.Mvc
+@using System.Web.Mvc
+@using System.Web.Mvc.Html
+
+<head>
+    <link rel="stylesheet" href="HelloWorld/module.css" />
+</head>
+
+@if (Request.IsAuthenticated)
+{
+    <a href="@Url.Action("Open", "ArticleEditor")">
+        <button class="modern-button" type="button">Go to Text Editor</button>
+    </a>
+}
+
+@if (Dnn.User.IsAdmin || Dnn.User.IsSuperUser)
+{
+    <a href="@Url.Action("Open", "Admin")">
+        <button class="modern-button" type="button">Go to Admin Page</button>
+    </a>
+}
+

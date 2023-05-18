@@ -17,14 +17,27 @@ using DotNetNuke.Web.Mvc.Framework.Controllers;
 using StockY.Dnn.HelloWorld.Components;
 using StockY.Dnn.HelloWorld.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace StockY.Dnn.HelloWorld.Controllers
 {
+
     [DnnHandleError]
-    public class ItemController : DnnController
+    public class IndexController : DnnController
     {
+        public ActionResult Back()
+        {
+            return View("Index");
+        }
+
+
+
+
+
+
+
 
         public ActionResult Delete(int itemId)
         {
@@ -80,8 +93,9 @@ namespace StockY.Dnn.HelloWorld.Controllers
         [ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
         public ActionResult Index()
         {
+            List<string> anyadfaasza = new List<string>() { "asd","dsdsad"};
             var items = ItemManager.Instance.GetItems(ModuleContext.ModuleId);
-            return View(items);
+            return View(anyadfaasza);
         }
     }
 }

@@ -1,0 +1,51 @@
+.back {
+    width: 3em; /* Adjust the value as needed */
+    height: 3em; /* Adjust the value as needed */
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform 0.3s;
+}
+.back:hover {
+        transform: scale(1.1);
+}
+
+.back-button:active {
+    transform: scale(0.9);
+}
+
+.valami {
+    display: inline-block;
+    margin: 0px;
+    vertical-align: bottom;
+    margin-left: 2px;
+    font-size: 3em;
+    color: #2c2c2c;
+}
+
+.fent {
+    margin-bottom: 5px;
+}
+
+.modern-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #2c2c2c;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+    .modern-button:hover {
+        background-color: #2c2c2c;
+        color: #fff;
+    }
+
+.modern-button:active {
+    transform: scale(0.95);
+}

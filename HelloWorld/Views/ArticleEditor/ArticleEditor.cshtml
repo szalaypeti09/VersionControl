@@ -1,0 +1,51 @@
+﻿﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage
+@{
+    ViewBag.Title = "ArticleEditor";
+    Layout = "~/desktopmodules/mvc/helloworld/Views/Shared/_Layout.cshtml"; 
+}
+
+<head>
+    <link rel="stylesheet" href="HelloWorld/module.css" />
+    <script src="https://cdn.tiny.cloud/1/zzz06y3747i807oxur9zi9rtxb1xrjc0o5i3io301817caa8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#ArticleEditor',
+            width: 1200,
+            height: 800,
+            plugins: [
+                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+                'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media',
+                'table', 'emoticons', 'help', 'quickbars', 'visualchars', 'editimage'
+            ],
+            toolbar: 'undo redo | format | styles |bold italic underline | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link table image media | forecolor backcolor | ' +
+                ' preview fullscreen  | help', image_advtab: true,
+            menubar: ' file edit format insert view help',
+            menu: {
+                file: { title: 'File', items: 'newdocument | print' },
+                edit: { title: 'Edit', items: 'undo redo | cut copy paste pastetext | selectall | searchreplace' },
+                view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen | showcomments' },
+                insert: { title: 'Insert', items: 'image link media addcomment pageembed template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor tableofcontents | insertdatetime' },
+                format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | fontsize fontfamily forecolor backcolor | align lineheight styles blocks | removeformat' },
+                view: { title: 'View', items: 'wordcount code | visualblocks visualchars | preview fullscreen' },
+                help: { title: 'Help', items: 'help' }
+            },
+            quickbars_selection_toolbar: ' bold italic forecolor backcolor | quicklink blockquote | removeformat',
+            quickbars_insert_toolbar: 'image quicktable | hr charmap',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+        });
+    </script>
+</head>
+
+<div class="fent">
+    <a href="@Url.Action("Back","Index")">
+        <img class="back" src="http://cliparts.co/cliparts/gTe/EqL/gTeEqL6Kc.png" alt="Back" />
+    </a>
+
+    <h1 class="valami">Article Editor</h1>
+</div>
+
+<textarea id="ArticleEditor"></textarea>
+
+<button class="modern-button">Send</button> <button class="modern-button">Cancel</button>
+

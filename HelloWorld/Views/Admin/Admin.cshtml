@@ -1,0 +1,46 @@
+﻿﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/desktopmodules/mvc/helloworld/Views/Shared/_Layout.cshtml";
+}
+
+<div class="fent">
+    <a href="@Url.Action("Back","Index")">
+        <img class="back" src="http://cliparts.co/cliparts/gTe/EqL/gTeEqL6Kc.png" alt="Back" />
+    </a>
+
+    <h1 class="valami">Admin</h1>
+</div>
+
+<table class="dnn-settings-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>Sample Item 1</td>
+            <td>John Doe</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>Sample Item 2</td>
+            <td>Jane Smith</td>
+            <td>Inactive</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>Sample Item 3</td>
+            <td>Robert Johnson</td>
+            <td>Active</td>
+        </tr>
+    </tbody>
+</table>
+
