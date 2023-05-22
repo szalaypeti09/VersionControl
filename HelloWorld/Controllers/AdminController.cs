@@ -9,7 +9,6 @@ namespace StockY.Dnn.HelloWorld.Controllers
 {
     public class AdminController : DnnController
     {
-        // GET: Admin
         public ActionResult Open()
         {
             return View("Admin");

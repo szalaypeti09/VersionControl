@@ -104,18 +104,17 @@
       <DependentUpon>Settings.resx</DependentUpon>
     </Compile>
     <Compile Include="Components\FeatureController.cs" />
-    <Compile Include="Components\ItemManager.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ArticleEditorController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
-    <Compile Include="Models\Item.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Models\AdminTable.cs" />
+    <Compile Include="Models\ArticleTable.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\StatusTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Documentation\Documentation.css" />
-    <Content Include="Documentation\Documentation.html" />
     <Content Include="License.txt" />
     <Content Include="module.css" />
     <Content Include="ReleaseNotes.txt" />

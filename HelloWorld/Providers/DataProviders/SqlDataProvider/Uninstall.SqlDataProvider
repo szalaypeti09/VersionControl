@@ -1,3 +1,10 @@
-﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HelloWorld_Items]') AND type in (N'U'))
-DROP TABLE {databaseOwner}[{objectQualifier}HelloWorld_Items]
+﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}AdminTable') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}AdminTable
 GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}ArticleTable') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}ArticleTable
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}StatusTable') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}StatusTable
+GO
+
