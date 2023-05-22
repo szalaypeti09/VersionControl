@@ -24,15 +24,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var articleTable in Model)
         {
             <tr>
-                <td>@item.ID</td>
-                <td>@item.Title</td>
-                <td>@item.Article</td>
-                <td>@item.Author</td>
-                <td>@item.Created
-                <td>
+                <td>@articleTable.ID</td>
+                <td>@articleTable.Title</td>
+                <td>@articleTable.Article</td>
+                <td>@articleTable.Author</td>
+                <td>@articleTable.Created</td>
             </tr>
         }
     </tbody>

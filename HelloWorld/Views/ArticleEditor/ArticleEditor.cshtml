@@ -4,7 +4,7 @@
 
 @{
     ViewBag.Title = "ArticleEditor";
-    Layout = "~/desktopmodules/mvc/helloworld/Views/Shared/_Layout.cshtml"; 
+    Layout = "~/desktopmodules/mvc/helloworld/Views/Shared/_Layout.cshtml";
 }
 
 <head>
@@ -48,11 +48,43 @@
     <h1 class="valami">Article Editor</h1>
 </div>
 
-<form action="@Url.Action("SaveData","ArticleEditor")" method="post">
-    <textarea name="title"></textarea>
-    <textarea id="ArticleEditor" name="article"></textarea>
-    <input type="hidden" name="author" value="@Dnn.User.Username" />
-    <input type="hidden" name="created" value="@DateTime.Now" />
-    <button type="submit" class="modern-button">Send</button> <button class="modern-button" type="reset">Cancel</button>
-</form>
+<textarea id="Title" name="title"></textarea>
+<textarea id="ArticleEditor" name="article"></textarea>
+<input id="Author" type="hidden" name="author" value="@Dnn.User.Username" />
+<input id="Created" type="hidden" name="created" value="@DateTime.Now" />
+<button class="modern-button" type="button" onclick="submitForm()">Send</button>
+<button class="modern-button" type="reset">Cancel</button>
+
+<script>
+    function submitForm() {
+        var title = document.getElementById("Title").value;
+        var article = tinymce.get('ArticleEditor').getContent();
+        var author = document.getElementById("Author").value;
+        var created = document.getElementById("Created").value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Module/moduleId/@Dnn.ModuleContext.ModuleId/controller/ArticleEditor/action/SaveData", true); @*Module az aktuális oldal neve*@
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    alert("Data saved successfully!");
+                } else {
+                    alert("An error occurred while saving the data.");
+                }
+            }
+        };
+
+        var formData = "Title=" + encodeURIComponent(title) + "&Article=" + encodeURIComponent(article) + "&Author=" + encodeURIComponent(author) + "&Created=" + encodeURIComponent(created);
+
+        xhr.send(formData);
+    }
+</script>
+
+
+
+
+
+
+
 

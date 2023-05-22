@@ -1,20 +1,22 @@
-﻿using DotNetNuke.Web.Mvc.Framework.Controllers;
+﻿using DotNetNuke.Web.Mvc.Framework.ActionFilters;
+using DotNetNuke.Web.Mvc.Framework.Controllers;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+
 using System.Web.Mvc;
 
 namespace StockY.Dnn.HelloWorld.Controllers
 {
+    [DnnHandleError]
     public class ArticleEditorController : DnnController
     {
+        [HttpGet]
         public ActionResult Open()
         {
             return View("ArticleEditor");
         }
 
+        [HttpPost]
         public ActionResult SaveData(string title, string article, string author, DateTime? created)
         {
             using (var connection = new SqlConnection("Data Source=.\\SQLExpress;Initial Catalog=host;User ID=host;Password=host123"))
@@ -30,19 +32,26 @@ namespace StockY.Dnn.HelloWorld.Controllers
 
                 command.ExecuteNonQuery();
 
-                int insertedId = Convert.ToInt32(command.ExecuteScalar());
+                string query = "SELECT MAX(ID) FROM ArticleTable";
 
-                string insertQuery2 = "INSERT INTO AdminTable (ArticleID, StatusID) VALUES (@Article, @Status)";
+                SqlCommand command2 = new SqlCommand(query, connection);
 
-                using (SqlCommand command2 = new SqlCommand(insertQuery2, connection))
-                {
-                    command2.Parameters.AddWithValue("@Article", insertedId);
-                    command2.Parameters.AddWithValue("@Status", 3);
+                SqlDataReader reader = command2.ExecuteReader();
 
-                    command2.ExecuteNonQuery();
-                }
 
-                return RedirectToAction("Index", "Index");
+                reader.Read();
+                int latestID = reader.GetInt32(0);
+                reader.Close();
+
+                var command3 = new SqlCommand("INSERT INTO AdminTable (ArticleID, StatusID) VALUES (@Article, @Status)", connection);
+
+                command3.Parameters.AddWithValue("@Article", latestID);
+                command3.Parameters.AddWithValue("@Status", 3);
+                 
+                command3.ExecuteNonQuery();
+
+
+                return View();
             }
         }
     }
