@@ -17,7 +17,7 @@
 
 @if (Dnn.User.IsAdmin || Dnn.User.IsSuperUser)
 {
-    <a href="@Url.Action("Open", "Admin")">
+    <a href="@Url.Action("DisplayData", "Admin")">
         <button class="modern-button" type="button">Go to Admin Page</button>
     </a>
 }

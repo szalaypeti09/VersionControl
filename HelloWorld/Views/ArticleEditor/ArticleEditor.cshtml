@@ -1,4 +1,7 @@
 ﻿﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage
+
+@using DotNetNuke.Entities.Users
+
 @{
     ViewBag.Title = "ArticleEditor";
     Layout = "~/desktopmodules/mvc/helloworld/Views/Shared/_Layout.cshtml"; 
@@ -45,7 +48,11 @@
     <h1 class="valami">Article Editor</h1>
 </div>
 
-<textarea id="ArticleEditor"></textarea>
-
-<button class="modern-button">Send</button> <button class="modern-button">Cancel</button>
+<form action="@Url.Action("SaveData","ArticleEditor")" method="post">
+    <textarea name="title"></textarea>
+    <textarea id="ArticleEditor" name="article"></textarea>
+    <input type="hidden" name="author" value="@Dnn.User.Username" />
+    <input type="hidden" name="created" value="@DateTime.Now" />
+    <button type="submit" class="modern-button">Send</button> <button class="modern-button" type="reset">Cancel</button>
+</form>
 
